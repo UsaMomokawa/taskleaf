@@ -4,8 +4,8 @@ RSpec.describe "Items", type: :system do
   it 'create an item' do
     visit new_item_path
 
-    fill_in 'アイテム名', 'コンクリコンシーラー'
-    fill_in 'なぜ買いたいか', 'Youtuber絶賛の商品'
+    fill_in 'アイテム名', with: 'コンクリコンシーラー'
+    fill_in 'なぜ買いたいか', with: 'Youtuber絶賛の商品'
     select '1ヶ月(優先度高)', from: 'いつまでに買いたいか'
     click_on '保存する'
 
@@ -17,7 +17,7 @@ RSpec.describe "Items", type: :system do
 
     visit edit_item_path(item)
 
-    fill_in 'なぜ買いたいか', 'とろとろ唇になるらしい'
+    fill_in 'なぜ買いたいか', with: 'とろとろ唇になるらしい'
     click_on '保存する'
 
     expect(page).to have_content "#{item.name}の情報を修正しました"

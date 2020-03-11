@@ -1,0 +1,9 @@
+.container
+  .item-container
+    .item__name
+      = @item.name
+    .item__description
+      = @item.description
+
+    .item__destroy-button
+      = link_to "アイテムを削除する", item_path(@item), method: :delete, data: { confirm: "#{@item.name}を削除しますか？" }

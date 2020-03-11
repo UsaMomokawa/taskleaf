@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    models:
+      item: アイテム
+    attributes:
+      item:
+        name: アイテム名
+        description: なぜ買いたいか
+        priority: いつまでに買いたいか
+        status: ステータス
+    errors:
+      messages:
+        record_invalid: 検証エラーが発生しました
+        blank: を入力してください
+        too_short: が短すぎます
+        too_long: が長すぎます
+        taken: は既に使われています
+        confirmation: と%{attribute}の入力が一致しません
+  helpers:
+    submit: 保存する

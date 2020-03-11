@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+p 'seedデータ作成'
+
+4.times do |i|
+  Item.create(name: "ミルクコンシーラー#{i}", description: 'Youtuber絶賛Youtuber絶賛Youtuber絶賛Youtuber絶賛Youtuber絶賛Youtuber絶賛', status: 0, priority: 0)
+end

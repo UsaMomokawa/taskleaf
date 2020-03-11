@@ -1,0 +1,9 @@
+.container
+  .list-items-container
+    - @items.each do |item|
+      .list-item-container
+        .list-item-container__inner
+          .list-item__name
+            = link_to item.name, item_path(item)
+          .list-item__description
+            = item.description

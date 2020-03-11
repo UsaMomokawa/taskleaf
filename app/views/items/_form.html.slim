@@ -1,0 +1,20 @@
+- if item.errors.present?
+  ul.error-messages
+    - item.errors.full_messages.each do |message|
+      li.error-message
+        = message
+
+.form-items
+  = form_with model: item, local: true do |f|
+    .form-item
+      = f.label :name, class: "form-item__label"
+      = f.text_field :name, class: "form-item__text"
+    .form-item
+      = f.label :description, class: "form-item__label"
+      = f.text_area :description, class: "form-item__text"
+    .form-item
+      = f.label :priority, class: "form-item__label"
+      = f.select :priority, options_for_select([['1ヶ月(優先度高)', 0], ['3ヶ月(優先度中)', 1], ['1年(優先度低)', 2]])
+
+    .form-item
+      = f.submit '保存する', class: "a-button is-submit"
