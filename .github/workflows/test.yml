@@ -1,0 +1,30 @@
+name: Test
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby 2.7
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.7.x
+    - name: Build and test with Rspec
+      env:
+        RAILS_ENV: test
+      run: |
+        sudo apt-get install libsqlite3-dev
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+        bundle exec rails webpacker:install
+        bundle exec rails db:create
+        bundle exec rails db:migrate
+        bundle exec rspec
