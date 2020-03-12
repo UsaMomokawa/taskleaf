@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Items", type: :system do
+RSpec.describe 'Items', type: :system do
   it 'create an item' do
     visit new_item_path
 
@@ -13,7 +15,12 @@ RSpec.describe "Items", type: :system do
   end
 
   it 'update an item ' do
-    item = Item.create(name: 'とうふリップ', description: 'プルプル唇になるらしい', status: 0, priority: 2)
+    item = Item.create(
+      name: 'とうふリップ',
+      description: 'プルプル唇になるらしい',
+      status: 0,
+      priority: 2
+    )
 
     visit edit_item_path(item)
 
@@ -24,8 +31,13 @@ RSpec.describe "Items", type: :system do
   end
 
   it 'delete an item' do
-    item = Item.create(name: 'とうふリップ', description: 'プルプル唇になるらしい', status: 0, priority: 2)
-    
+    item = Item.create(
+      name: 'とうふリップ',
+      description: 'プルプル唇になるらしい',
+      status: 0,
+      priority: 2
+    )
+
     visit item_path(item)
     accept_alert do
       click_on 'アイテムを削除する'

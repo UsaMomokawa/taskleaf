@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ItemsController < ApplicationController
   def index
     @items = Item.all
@@ -14,7 +16,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to item_path(@item), notice: "#{@item.name}を買いたいモノに追加しました"
     else
-      flash.now[:alert] = "入力項目に誤りがあります"
+      flash.now[:alert] = '入力項目に誤りがあります'
       render :new
     end
   end
@@ -29,7 +31,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to item_path(@item), notice: "#{@item.name}の情報を修正しました"
     else
-      flash.now[:alert] = "入力項目に誤りがあります"
+      flash.now[:alert] = '入力項目に誤りがあります'
       render :edit
     end
   end
