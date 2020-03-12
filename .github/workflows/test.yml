@@ -7,24 +7,46 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
+  rubocop:
+    runs-on: ubuntu-18.04
     steps:
-    - uses: actions/checkout@v2
+    - name: checkout
+      uses: actions/checkout@v2
+
     - name: Set up Ruby 2.7
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.7.x
-    - name: Build and test with Rspec
+
+    - name: Build
+      run: gem install rubocop rubocop-rails
+
+    - name: Rubocop
+      run: rubocop
+
+  build_and_test:
+    runs-on: ubuntu-18.04
+    needs: rubocop
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: Set up Ruby 2.7
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.7.x
+
+    - name: Build
       env:
         RAILS_ENV: test
       run: |
+        sudo apt-get update
         sudo apt-get install libsqlite3-dev
         gem install bundler
         bundle install --jobs 4 --retry 3
-        bundle exec rails webpacker:install
+        yarn install
         bundle exec rails db:create
         bundle exec rails db:migrate
-        bundle exec rspec
+
+    - name: RSpec
+      run: bundle exec rspec
