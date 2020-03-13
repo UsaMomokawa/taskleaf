@@ -1,8 +1,8 @@
 .container
   .list-items-searcher
-    = search_form_for @q do |f|
-      = f.label :name_cont, '名前'
-      = f.search_field :name_cont
+    = search_form_for @q, html: { name: 'search' } do |f|
+      = f.collection_check_boxes :status_in, Item::STATUSES, :first, :last
+      = f.search_field :name_cont, placeholder: 'アイテム名で検索'
       = f.submit
 
   .list-items-container
@@ -13,3 +13,5 @@
             = link_to item.name, item_path(item)
           .list-item__description
             = item.description
+          .list-item__status
+            = Item.human_attribute_name("status.#{item.status}")
