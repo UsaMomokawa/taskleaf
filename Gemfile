@@ -7,6 +7,7 @@ ruby '2.7.0'
 
 gem 'sassc-rails'
 gem 'slim'
+gem 'ransack', github: 'activerecord-hackery/ransack'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
