@@ -1,24 +1,28 @@
 .container
-  .list-items-searcher
-    = search_form_for @q, html: { name: 'search' } do |f|
-      = f.collection_check_boxes :status_in, Item::STATUSES, :first, :last
-      = f.search_field :name_cont, placeholder: 'アイテム名で検索'
-      = f.submit
+  section
+    = render 'about'
 
-  .list-items-container
-    - @items.each do |item|
-      .list-item-container
-        .list-item-container__inner
-          .list-item__name
-            = link_to item.name, item_path(item)
-          .list-item__description
-            = item.description
-          .list-item__status
-            = '#' + Item.human_attribute_name("status.#{item.status}")
-          .list-item__buttons
-            - if item.status == 'unpurchased'
-              .list-item__button__milk.is-button
-                = link_to 'シボる', item_path(item, params: { item: { status: :purchased } }, class: 'is-text'), method: :patch, data: { confirm: "#{item.name}を「買ったアイテム」に移動しますか？" }
-            - if item.status == 'purchased'
-              .list-item__button__review.is-button.is-block
-                = 'レビューする'
+  section
+    .list-items-searcher
+      = search_form_for @q, html: { name: 'search' } do |f|
+        = f.collection_check_boxes :status_in, Item::STATUSES, :first, :last
+        = f.search_field :name_cont, placeholder: 'アイテム名で検索'
+        = f.submit
+
+    .list-items-container
+      - @items.each do |item|
+        .list-item-container
+          .list-item-container__inner
+            .list-item__name
+              = link_to item.name, item_path(item)
+            .list-item__description
+              = item.description
+            .list-item__status
+              = '#' + Item.human_attribute_name("status.#{item.status}")
+            .list-item__buttons
+              - if item.status == 'unpurchased'
+                .list-item__button__milk.is-button
+                  = link_to 'シボる', item_path(item, params: { item: { status: :purchased } }, class: 'is-text'), method: :patch, data: { confirm: "#{item.name}を「買ったアイテム」に移動しますか？" }
+              - if item.status == 'purchased'
+                .list-item__button__review.is-button.is-block
+                  = 'レビューする'
