@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Item::SearchItems", type: :system do
+RSpec.describe 'Item::SearchItems', type: :system do
   it 'search items by name' do
     create(:item, name: 'アイテープ')
     create(:item, name: 'リップ')

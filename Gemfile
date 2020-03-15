@@ -5,9 +5,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
 
+gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'sassc-rails'
 gem 'slim'
-gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'stateful_enum'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -38,9 +38,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'rspec-rails', '~> 4.0.0.beta'
   gem 'factory_bot_rails'
-  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
+  gem 'rspec-rails', '~> 4.0.0.beta'
 end
 
 group :development do

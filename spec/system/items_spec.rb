@@ -11,7 +11,7 @@ RSpec.describe 'Items', type: :system do
     select '1ヶ月(優先度高)', from: 'いつまでに買いたいか'
     click_on '保存する'
 
-    expect(page).to have_content "とうふリップを買いたいモノに追加しました"
+    expect(page).to have_content 'とうふリップを買いたいモノに追加しました'
   end
 
   it 'update an item ' do
