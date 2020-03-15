@@ -15,3 +15,6 @@
             = item.description
           .list-item__status
             = Item.human_attribute_name("status.#{item.status}")
+          - if item.status == 'unpurchased'
+            .list-item__milk-button
+              = link_to 'シボる', item_path(item, params: { item: { status: :purchased } }), method: :patch, data: { confirm: "#{item.name}を「買ったアイテム」に移動しますか？" }
