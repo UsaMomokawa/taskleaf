@@ -14,7 +14,11 @@
           .list-item__description
             = item.description
           .list-item__status
-            = Item.human_attribute_name("status.#{item.status}")
-          - if item.status == 'unpurchased'
-            .list-item__milk-button
-              = link_to 'シボる', item_path(item, params: { item: { status: :purchased } }), method: :patch, data: { confirm: "#{item.name}を「買ったアイテム」に移動しますか？" }
+            = '#' + Item.human_attribute_name("status.#{item.status}")
+          .list-item__buttons
+            - if item.status == 'unpurchased'
+              .list-item__button__milk.is-button
+                = link_to 'シボる', item_path(item, params: { item: { status: :purchased } }, class: 'is-text'), method: :patch, data: { confirm: "#{item.name}を「買ったアイテム」に移動しますか？" }
+            - if item.status == 'purchased'
+              .list-item__button__review.is-button.is-block
+                = 'レビューする'
