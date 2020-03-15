@@ -1,3 +1,23 @@
+GIT
+  remote: https://github.com/activerecord-hackery/ransack.git
+  revision: aee2d97dd4c66d344030f4d41b207015f8c68fd3
+  specs:
+    polyamorous (2.3.2)
+      activerecord (>= 5.2.1)
+    ransack (2.3.2)
+      activerecord (>= 5.2.1)
+      activesupport (>= 5.2.1)
+      i18n
+      polyamorous (= 2.3.2)
+
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: be482005f7abaad473eb9047cab0122ed4081265
+  branch: master
+  specs:
+    faker (2.10.2)
+      i18n (>= 1.6, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -77,6 +97,11 @@ GEM
     crass (1.0.6)
     diff-lcs (1.3)
     erubi (1.9.0)
+    factory_bot (5.1.1)
+      activesupport (>= 4.2.0)
+    factory_bot_rails (5.1.1)
+      factory_bot (~> 5.1.0)
+      railties (>= 4.2.0)
     ffi (1.12.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -209,6 +234,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
+    stateful_enum (0.6.0)
     temple (0.8.2)
     thor (1.0.1)
     thread_safe (0.3.6)
@@ -246,11 +272,14 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara
+  factory_bot_rails
+  faker!
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   pg
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.1)
+  ransack!
   rspec-rails (~> 4.0.0.beta)
   rubocop (~> 0.80.1)
   rubocop-rails
@@ -260,6 +289,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
+  stateful_enum
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)

@@ -6,37 +6,27 @@ RSpec.describe 'Items', type: :system do
   it 'create an item' do
     visit new_item_path
 
-    fill_in 'アイテム名', with: 'コンクリコンシーラー'
-    fill_in 'なぜ買いたいか', with: 'Youtuber絶賛の商品'
+    fill_in 'アイテム名', with: 'とうふリップ'
+    fill_in 'なぜ買いたいか', with: 'プルプル唇になるらしい'
     select '1ヶ月(優先度高)', from: 'いつまでに買いたいか'
     click_on '保存する'
 
-    expect(page).to have_content 'コンクリコンシーラーを買いたいモノに追加しました'
+    expect(page).to have_content 'とうふリップを買いたいモノに追加しました'
   end
 
   it 'update an item ' do
-    item = Item.create(
-      name: 'とうふリップ',
-      description: 'プルプル唇になるらしい',
-      status: 0,
-      priority: 2
-    )
+    item = create(:item, description: 'なんとなく買いたい')
 
     visit edit_item_path(item)
 
-    fill_in 'なぜ買いたいか', with: 'とろとろ唇になるらしい'
+    fill_in 'なぜ買いたいか', with: '今月限りの受注生産商品'
     click_on '保存する'
 
     expect(page).to have_content "#{item.name}の情報を修正しました"
   end
 
   it 'delete an item' do
-    item = Item.create(
-      name: 'とうふリップ',
-      description: 'プルプル唇になるらしい',
-      status: 0,
-      priority: 2
-    )
+    item = create(:item)
 
     visit item_path(item)
     accept_alert do

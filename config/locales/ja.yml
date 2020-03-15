@@ -7,7 +7,10 @@ ja:
         name: アイテム名
         description: なぜ買いたいか
         priority: いつまでに買いたいか
-        status: ステータス
+      item/status:
+        unpurchased: 買ってない
+        purchased: 買った
+        reviewed: レビュー済
     errors:
       messages:
         record_invalid: 検証エラーが発生しました
